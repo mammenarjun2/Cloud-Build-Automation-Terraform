@@ -11,7 +11,7 @@ steps:
         gcloud config set account cloudbuild@cloudbuild-386519.iam.gserviceaccount.com
 
         # Set the project ID
-        gcloud config set project cloudbuild-386519
+        gcloud config set project cloudbuild
 
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'bash'
