@@ -5,7 +5,7 @@ steps:
       - '-c'
       - |
         # Fetch the buildkey secret
-        export BUILDKEY_CONTENT=$(gcloud secrets versions access latest --secret=buildkey)
+        export BUILDKEY_CONTENT=$(gcloud secrets versions access 2 --secret=buildkey)
 
         # Create a temporary key file
         echo "$BUILDKEY_CONTENT" > /tmp/buildkey.json
