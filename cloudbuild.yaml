@@ -1,0 +1,36 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Authenticate with Google Cloud
+        gcloud auth activate-service-account --key-file=[KEY_FILE]
+
+        # Set the project ID
+        gcloud config set project [PROJECT_ID]
+
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Move into the Terraform directory
+        cd [TERRAFORM_DIRECTORY]
+
+        # Initialize Terraform
+        terraform init
+
+        # Plan the changes
+        terraform plan -out=tfplan
+
+  - name: 'hashicorp/terraform:latest'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Move into the Terraform directory
+        cd [TERRAFORM_DIRECTORY]
+
+        # Apply the changes
+        terraform apply tfplan
