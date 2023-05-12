@@ -5,7 +5,7 @@ steps:
       - '-c'
       - |
         # Authenticate with Google Cloud
-        gcloud auth activate-service-account --key-file=buildkey
+        gcloud auth activate-service-account --key-file=secrets/buildkey
 
         # Set the project ID
         gcloud config set project arjun-cts-sandbox
