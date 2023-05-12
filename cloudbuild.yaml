@@ -5,7 +5,7 @@ steps:
       - '-c'
       - |
         # Fetch the buildkey secret
-        export BUILDKEY_CONTENT=$(gcloud secrets versions access latest --secret=buildkey --format='get(payload.data)')
+        export BUILDKEY_CONTENT=$(gcloud secrets versions access 2 --secret=projects/645849086777/secrets/buildkey --format='get(payload.data)')
 
         # Decode the base64-encoded secret content
         export BUILDKEY_JSON=$(echo "$BUILDKEY_CONTENT" | base64 -d)
@@ -29,4 +29,5 @@ steps:
 
         # Plan the changes
         terraform plan -out=tfplan
+
 
