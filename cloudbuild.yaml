@@ -5,10 +5,10 @@ steps:
       - '-c'
       - |
         # Authenticate with Google Cloud
-        gcloud auth activate-service-account --key-file=[KEY_FILE]
+        gcloud auth activate-service-account --key-file=buildkey
 
         # Set the project ID
-        gcloud config set project [PROJECT_ID]
+        gcloud config set project arjun-cts-sandbox
 
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'bash'
