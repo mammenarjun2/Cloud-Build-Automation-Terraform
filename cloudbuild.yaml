@@ -11,10 +11,7 @@ steps:
         export BUILDKEY_JSON=$(echo "$BUILDKEY_CONTENT" | base64 -d)
 
         # Create a temporary key file
-        echo "$BUILDKEY_JSON" > /tmp/buildkey.json
-
-        # Authenticate with Google Cloud using the temporary key file
-        gcloud auth activate-service-account --key-file=/tmp/buildkey.json
+        echo "$BUILDKEY_JSON" > /workspace/buildkey.json
 
         # Set the project ID
         gcloud config set project cloudbuild-386519
@@ -29,3 +26,6 @@ steps:
 
         # Plan the changes
         terraform plan -out=tfplan
+
+substitutions:
+  _BUILDKEY_CONTENT: /workspace/buildkey.json
