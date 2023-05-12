@@ -14,7 +14,7 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - 
+      - |
         # Initialize Terraform
         terraform init
 
