@@ -23,14 +23,3 @@ steps:
 
         # Plan the changes
         terraform plan -out=tfplan
-
-  - name: 'hashicorp/terraform:latest'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        # Move into the Terraform directory
-        cd [TERRAFORM_DIRECTORY]
-
-        # Apply the changes
-        terraform apply tfplan
