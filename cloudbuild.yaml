@@ -29,5 +29,3 @@ steps:
 
         # Plan the changes
         terraform plan -out=tfplan
-
-
