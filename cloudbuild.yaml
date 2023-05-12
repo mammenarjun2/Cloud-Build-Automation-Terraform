@@ -14,10 +14,7 @@ steps:
     entrypoint: 'bash'
     args:
       - '-c'
-      - |
-        # Move into the Terraform directory
-        cd [TERRAFORM_DIRECTORY]
-
+      - 
         # Initialize Terraform
         terraform init
 
