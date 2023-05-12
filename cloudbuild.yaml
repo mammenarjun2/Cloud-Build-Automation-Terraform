@@ -5,13 +5,10 @@ steps:
       - '-c'
       - |
         # Fetch the buildkey secret
-        export BUILDKEY_CONTENT=$(gcloud secrets versions access 2 --secret=buildkey)
+        export BUILDKEY_CONTENT=$(gcloud secrets versions access latest --secret=projects/645849086777/secrets/buildkey/versions/2)
 
-        # Create a temporary key file
-        echo "$BUILDKEY_CONTENT" > /tmp/buildkey.json
-
-        # Authenticate with Google Cloud using the temporary key file
-        gcloud auth activate-service-account --key-file=/tmp/buildkey.json
+        # Authenticate with Google Cloud using the buildkey content
+        echo "$BUILDKEY_CONTENT" | gcloud auth activate-service-account --key-file=-
 
         # Set the project ID
         gcloud config set project arjun-cts-sandbox
