@@ -8,7 +8,7 @@ steps:
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account --key-file=SHORT_SHA
+        gcloud auth activate-service-account --key-file=cloudbuild.yaml
 
         # Set the project ID
        
@@ -19,7 +19,7 @@ steps:
       - '-c'
       - |
         
-        export GOOGLE_APPLICATION_CREDENTIALS=SHORT_SHA
+        export GOOGLE_APPLICATION_CREDENTIALS=cloudbuild.yaml
         
         # Initialize Terraform
         terraform init
