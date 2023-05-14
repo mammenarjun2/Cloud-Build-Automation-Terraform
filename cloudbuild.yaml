@@ -8,7 +8,7 @@ steps:
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account --key-file=cloudbuild.yaml --account=engine@cloudbuild-386519.iam.gserviceaccount.com
+        gcloud auth activate-service-account --account=engine@cloudbuild-386519.iam.gserviceaccount.com --key-file=cloudbuild.yaml 
 
         # Set the project ID
        
