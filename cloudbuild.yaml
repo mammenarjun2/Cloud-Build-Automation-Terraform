@@ -14,7 +14,7 @@ steps:
        
 
   - name: 'hashicorp/terraform:latest'
-    entrypoint: 'bin/sh'
+    entrypoint: 'sh'
     args:
       - '-c'
       - |
