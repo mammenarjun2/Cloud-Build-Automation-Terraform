@@ -24,6 +24,6 @@ steps:
         # Plan the changes
         terraform plan -out=tfplan
         
-        terraform apply -out=tfplan
+        terraform apply tfplan
 
 
