@@ -2,7 +2,7 @@
 resource "google_compute_instance" "default" {
   name         = "test"
   machine_type = "e2-medium"
-  zone         = "us-central1-a"
+  zone         = "europe-west1-a"
   project      = "cloudbuild-386519"
 
   tags = ["foo", "bar"]
