@@ -5,18 +5,10 @@ steps:
       - '-c'
       - |
         # Set the service account for subsequent steps
-        gcloud config set account cloudbuild@cloudbuild-386519.iam.gserviceaccount.com
+        gcloud auth activate-service-account --key-file=cloudbuild.json
 
         # Set the project ID
         gcloud config set project cloudbuild-386519
-
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        # Fetch the buildkey secret
-        gcloud secrets versions access 3 --secret=projects/645849086777/secrets/buildkey --format='get(payload.data)' | base64 -d > /workspace/buildkey.json
 
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'bash'
