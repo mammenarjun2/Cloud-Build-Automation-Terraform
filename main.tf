@@ -1,6 +1,7 @@
 resource "google_service_account" "default" {
   account_id   = "testaccount"
   display_name = "service account"
+  project      = "cloudbuild-386519"
 }
 
 resource "google_compute_instance" "default" {
