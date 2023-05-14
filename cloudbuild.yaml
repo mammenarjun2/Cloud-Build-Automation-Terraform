@@ -5,7 +5,7 @@ steps:
       - '-c'
       - |
         
-        gcloud config set account computebuilder@cloudbuild-386519.iam.gserviceaccount.com
+        gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
         gcloud auth activate-service-account --key-file=cloudbuild.json
