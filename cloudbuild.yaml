@@ -8,7 +8,7 @@ steps:
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account --key-file=cloudbuild.json
+        gcloud auth activate-service-account --key-file=$$cloudbuild_json
        
 
   - name: 'hashicorp/terraform:latest'
@@ -17,7 +17,7 @@ steps:
       - '-c'
       - |
         
-        export GOOGLE_APPLICATION_CREDENTIALS=cloudbuild.json
+        export GOOGLE_APPLICATION_CREDENTIALS=$$cloudbuild_json
         
         # Initialize Terraform
         terraform init
