@@ -4,6 +4,9 @@ steps:
     args:
       - '-c'
       - |
+        
+        gcloud config set account newbuild@cloudbuild-386519.iam.gserviceaccount.com
+        
         # Set the service account for subsequent steps
         gcloud auth activate-service-account --key-file=cloudbuild.json
 
