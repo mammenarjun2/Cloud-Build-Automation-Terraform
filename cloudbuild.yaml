@@ -18,7 +18,6 @@ steps:
     args:
       - '-c'
       - |
-         
         gcloud auth activate-service-account --key-file=cloudbuild.json
         
         # Initialize Terraform
