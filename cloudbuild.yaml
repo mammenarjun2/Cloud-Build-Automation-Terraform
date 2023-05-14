@@ -1,3 +1,6 @@
+substitutions:
+  _CLOUDBUILD_JSON_SECRET: projects/your-project/secrets/cloudbuild_json/versions/latest
+
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
@@ -5,10 +8,12 @@ steps:
       - '-c'
       - |
         
+        echo "$_CLOUDBUILD_JSON_SECRET" > /test.json
+
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account --key-file=projects/645849086777/secrets/cloudbuild_json/versions/1
+        gcloud auth activate-service-account --key-file=/test.json
        
 
   - name: 'hashicorp/terraform:latest'
@@ -17,7 +22,7 @@ steps:
       - '-c'
       - |
         
-        export GOOGLE_APPLICATION_CREDENTIALS=projects/645849086777/secrets/cloudbuild_json/versions/1
+        export GOOGLE_APPLICATION_CREDENTIALS=/test.json
         
         # Initialize Terraform
         terraform init
@@ -26,5 +31,6 @@ steps:
         terraform plan -out=tfplan
         
         terraform apply tfplan
+
 
 
