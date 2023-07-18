@@ -7,12 +7,12 @@ steps:
     args:
       - '-c'
       - |
-        gcloud secrets versions access latest --secret=$_CLOUDBUILD_JSON_SECRET > /cloudbuild_key.json
+        gcloud secrets versions access latest --secret=$_CLOUDBUILD_JSON_SECRET > cloudbuild_key.json
         
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account engine-cloudbuild-386519-iam-g@cloudbuild-386914.iam.gserviceaccount.com --key-file=/cloudbuild_key.json
+        gcloud auth activate-service-account engine-cloudbuild-386519-iam-g@cloudbuild-386914.iam.gserviceaccount.com --key-file=cloudbuild_key.json
        
 
   - name: 'hashicorp/terraform:latest'
