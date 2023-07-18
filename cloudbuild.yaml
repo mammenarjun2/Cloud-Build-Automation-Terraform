@@ -7,8 +7,7 @@ steps:
     args:
       - '-c'
       - |
-        
-        echo "$_CLOUDBUILD_KEY" > /cloudbuild_key.json
+        gcloud secrets versions access latest --secret=$_CLOUDBUILD_JSON_SECRET > /cloudbuild_key.json
         
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
@@ -16,22 +15,18 @@ steps:
         gcloud auth activate-service-account engine-cloudbuild-386519-iam-g@cloudbuild-386914.iam.gserviceaccount.com --key-file=/cloudbuild_key.json
        
 
-
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'sh'
     args:
       - '-c'
       - |
-        
         export GOOGLE_APPLICATION_CREDENTIALS=/test.json
-        
+
         # Initialize Terraform
         terraform init
 
         # Plan the changes
         terraform plan -out=tfplan
-        
+
         terraform apply tfplan
-
-
 
