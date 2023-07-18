@@ -28,4 +28,4 @@ steps:
         terraform plan -out=tfplan
 
 options:
-  logging: CLOUD_LOGGING_ONLY
+  logging: LEGACY
