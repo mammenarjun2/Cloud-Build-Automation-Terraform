@@ -30,5 +30,5 @@ steps:
         # Show the Terraform plan
         terraform show tfplan
 
-options:
-  logging: CLOUD_LOGGING_ONLY
+#options:
+ # logging: CLOUD_LOGGING_ONLY
