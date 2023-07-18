@@ -5,7 +5,6 @@ steps:
     args:
       - '-c'
       - |
-        export GOOGLE_APPLICATION_CREDENTIALS=/test.json
 
         # Initialize Terraform
         terraform init
