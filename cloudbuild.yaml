@@ -2,21 +2,6 @@
  # _CLOUDBUILD_JSON_SECRET: projects/1089542086486/secrets/cloudbuild_json/versions/latest
 
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        
-        echo "$_CLOUDBUILD_KEY" > /cloudbuild_key.txt
-        
-        gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
-        
-        # Set the service account for subsequent steps
-        gcloud auth activate-service-account engine-cloudbuild-386519-iam-g@cloudbuild-386914.iam.gserviceaccount.com --key-file=/cloudbuild_key.txt
-       
-
-
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'sh'
     args:
@@ -34,4 +19,5 @@ steps:
         terraform apply tfplan
 
 
-
+options:
+  logging: CLOUD_LOGGING_ONLY
