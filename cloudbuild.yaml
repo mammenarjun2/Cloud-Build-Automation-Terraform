@@ -5,6 +5,8 @@ steps:
     args:
       - '-c'
       - |
+          
+        gcloud config set project cloudbuild-386914
 
         # Initialize Terraform
         terraform init
