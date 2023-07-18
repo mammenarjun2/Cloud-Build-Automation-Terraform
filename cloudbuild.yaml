@@ -1,5 +1,5 @@
 substitutions:
-  _CLOUDBUILD_JSON_SECRET: projects/1089542086486/secrets/cloudbuild_json/versions/latest
+  _CLOUDBUILD_JSON_SECRET: projects/1089542086486/secrets/cloudbuild_json
 
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
