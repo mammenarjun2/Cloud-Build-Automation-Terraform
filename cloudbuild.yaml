@@ -7,7 +7,7 @@ steps:
       - |
 
         echo "$_CLOUDBUILD_KEY" > /cloudbuild_key.json
-        gcloud auth activate-service-account --key-file=/cloudbuild_key.json
+        gcloud auth activate-service-account --key-file=/dev/stdin <<< "$_CLOUDBUILD_KEY"
 
         # Set the project ID
         gcloud config set project cloudbuild-386914
