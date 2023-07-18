@@ -16,6 +16,7 @@ steps:
         gcloud auth activate-service-account --key-file=/test.json
        
 
+
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'sh'
     args:
