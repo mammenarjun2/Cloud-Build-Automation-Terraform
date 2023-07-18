@@ -1,12 +1,25 @@
 
 steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+
+        echo "$_CLOUDBUILD_KEY" > /cloudbuild_key.json
+        gcloud auth activate-service-account --key-file=/cloudbuild_key.json
+
+        # Set the project ID
+        gcloud config set project cloudbuild-386914
+        
+        # Remove the service account key file
+        rm /cloudbuild_key.json
+  
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'sh'
     args:
       - '-c'
       - |
-          
-        gcloud config set project cloudbuild-386914
 
         # Initialize Terraform
         terraform init
