@@ -8,12 +8,12 @@ steps:
       - '-c'
       - |
         
-        echo "$_CLOUDBUILD_JSON_SECRET" > /test.json
+        echo "$_CLOUDBUILD_JSON_SECRET" > /cloudbuild_json
 
         gcloud config set account engine@cloudbuild-386519.iam.gserviceaccount.com
         
         # Set the service account for subsequent steps
-        gcloud auth activate-service-account --key-file=/test.json
+        gcloud auth activate-service-account --key-file=/cloudbuild_json
        
 
 
