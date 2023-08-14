@@ -9,17 +9,12 @@ steps:
       - 'init'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'  
-        
-  - name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+
+  - id: 'tf-plan'     
+    name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
     args:
-      - '-c'
-      - |
-
-        # Plan the changes
-        terraform plan -out=tfplan
-
-        # Show the Terraform plan
-        terraform show tfplan
+      - 'plan'
+      - '-lock=false'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
     waitFor: ['tf-init']
@@ -27,4 +22,5 @@ steps:
 
 #options:
  # logging: CLOUD_LOGGING_ONLY
+
 
