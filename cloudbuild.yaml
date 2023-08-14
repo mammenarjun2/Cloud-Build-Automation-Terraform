@@ -1,32 +1,28 @@
 
 steps:
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - id: 'tf-init'
+    name: 'hashicorp/terraform:latest'
     entrypoint: 'bash'
     args:
-      - '-c'
-      - |
-
-      
-        gcloud auth activate-service-account --key-file=/dev/stdin <<< "$_CLOUDBUILD_KEY"
-
-        # Set the project ID
-        gcloud config set project cloudbuild-386914
+      - 'init'
+    env:
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'  
         
-  
   - name: 'hashicorp/terraform:latest'
     entrypoint: 'sh'
     args:
       - '-c'
       - |
 
-        # Initialize Terraform
-        terraform init
-
         # Plan the changes
         terraform plan -out=tfplan
 
         # Show the Terraform plan
         terraform show tfplan
+    env:
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
+    waitFor: ['tf-init']
+
 
 #options:
  # logging: CLOUD_LOGGING_ONLY
