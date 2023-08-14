@@ -5,14 +5,12 @@ timeout: '3600s'
 steps:
   - id: 'tf-init'
     name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
-    entrypoint: 'bash'
     args:
       - 'init'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'  
         
   - name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
-    entrypoint: 'sh'
     args:
       - '-c'
       - |
@@ -30,7 +28,3 @@ steps:
 #options:
  # logging: CLOUD_LOGGING_ONLY
 
-
-
-#options:
- # logging: CLOUD_LOGGING_ONLY
