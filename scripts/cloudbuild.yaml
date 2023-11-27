@@ -1,29 +1,27 @@
----
-substitutions:
-  _TERRAFORM_VERSION: '1.3.5'
-timeout: '3600s'
 steps:
   - id: 'tf-init'
-    name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+    name: 'hashicorp/terraform:1.3.5'
     args:
       - 'init'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'  
 
   - id: 'tf-plan'     
-    name: 'hashicorp/terraform:${_TERRAFORM_VERSION}'
+    name: 'hashicorp/terraform:1.3.5'
     args:
       - 'plan'
       - '-lock=false'
+      - '-out=tfplan'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
     waitFor: ['tf-init']
 
-outputs:
-  - name: 'tfplan'
-    path: '/workspace/source/tfplan'
+  - id: 'copy-tfplan'
+    name: 'gcr.io/cloud-builders/gsutil'
+    args:
+      - 'cp'
+      - 'tfplan'
+      - 'gs://$BUCKET_NAME/tfplan'
 
 options:
   logging: NONE
-
-
