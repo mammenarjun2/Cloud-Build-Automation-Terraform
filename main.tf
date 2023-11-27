@@ -1,5 +1,5 @@
 
-
+/*
 resource "google_compute_instance" "default" {
   name         = "test"
   machine_type = "e2-medium"
@@ -33,3 +33,4 @@ resource "google_compute_instance" "default" {
   metadata_startup_script = "echo hi > /test.txt"
 
 }
+*/
