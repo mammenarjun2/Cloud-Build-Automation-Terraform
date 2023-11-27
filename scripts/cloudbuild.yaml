@@ -4,7 +4,7 @@ steps:
     args:
       - 'init'
     env:
-      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'  
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
 
   - id: 'tf-plan'     
     name: 'hashicorp/terraform:1.3.5'
@@ -16,12 +16,10 @@ steps:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
     waitFor: ['tf-init']
 
-  - id: 'copy-tfplan'
-    name: 'gcr.io/cloud-builders/gsutil'
+  - id: 'display-tfplan'
+    name: 'hashicorp/terraform:1.3.5'
     args:
-      - 'cp'
+      - 'show'
       - 'tfplan'
-      - 'gs://$BUCKET_NAME/tfplan'
-
-options:
-  logging: NONE
+    env:
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
