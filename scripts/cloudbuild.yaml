@@ -20,5 +20,7 @@ steps:
     waitFor: ['tf-init']
 
 
+options:
+  logging: NONE
 
 
