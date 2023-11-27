@@ -19,6 +19,9 @@ steps:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
     waitFor: ['tf-init']
 
+outputs:
+  - name: 'tfplan'
+    path: '/workspace/source/tfplan'
 
 options:
   logging: NONE
