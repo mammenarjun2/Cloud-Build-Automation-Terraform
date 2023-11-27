@@ -23,3 +23,11 @@ steps:
       - 'tfplan'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  substitutions:
+    _TERRAFORM_VERSION: '1.3.5'
+    PROJECT_ID: 'cloudbuild-386914'
+  serviceAccount: 'cloudbuild-386914@appspot.gserviceaccount.com'
+  logsBucket: 'gs://cloudbuild-386914_cloudbuild'
