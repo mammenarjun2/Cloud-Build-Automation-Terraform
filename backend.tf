@@ -1,5 +1,5 @@
 terraform {
   backend "gcs" {
-    bucket        = ""
+    bucket        = "tf-state-arj-1"
  }
 }
