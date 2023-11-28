@@ -26,18 +26,13 @@ steps:
 
   - id: 'display-tfplan'
     name: 'hashicorp/terraform:1.3.5'
-    args:
-      - 'show'
-      - 'tfplan'
-    env:
-      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
-    waitFor: ['tf-plan']
     entrypoint: '/bin/sh'
     dir: '/workspace'
-    - '-c'
-    - |
-      terraform show tfplan > tfplan-output.txt
-      cat tfplan-output.txt
+    args:
+      - '-c'
+      - |
+        terraform show tfplan > tfplan-output.txt
+        cat tfplan-output.txt
 
 options:
   logging: CLOUD_LOGGING_ONLY
