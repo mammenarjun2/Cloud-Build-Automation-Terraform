@@ -32,4 +32,5 @@ steps:
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
 
-
+logs:
+    output: 'text'
