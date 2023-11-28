@@ -31,6 +31,13 @@ steps:
       - 'tfplan'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
+    waitFor: ['tf-plan']
+    entrypoint: '/bin/sh'
+    dir: '/workspace'
+    - '-c'
+    - |
+      terraform show tfplan > tfplan-output.txt
+      cat tfplan-output.txt
 
-logs:
-    output: 'text'
+options:
+  logging: CLOUD_LOGGING_ONLY
