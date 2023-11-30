@@ -1,17 +1,13 @@
-resource "google_secret_manager_secret" "github-token-secret" {
-  secret_id = "github-token-secret"
-  project     = "cloudbuild-386914"
-
-  replication {
-    auto {}
-  }
+data "google_secret_manager_secret" "github-token-secret" {
+  project   = "cloudbuild-386914"
+  secret_id = "github-connection-token"
 }
 
-resource "google_secret_manager_secret_version" "github-token-secret-version" {
-  secret = google_secret_manager_secret.github-token-secret.id
-  secret_data = file("my-github-token.txt")
-  
-}  
+data "google_secret_manager_secret_version_access" "github-token-secret-version" {
+  project = "cloudbuild-386914"
+  secret  = data.google_secret_manager_secret.github-token-secret.id
+}
+
 
 resource "google_cloudbuildv2_connection" "github" {
   provider = google-beta
@@ -23,7 +19,7 @@ resource "google_cloudbuildv2_connection" "github" {
   github_config {
     app_installation_id = "44594018"
     authorizer_credential {
-      oauth_token_secret_version = google_secret_manager_secret_version.github-token-secret-version.id
+      oauth_token_secret_version = data.google_secret_manager_secret_version_access.github-token-secret-version.id
     }
   }
 }
@@ -54,7 +50,7 @@ resource "google_secret_manager_secret_iam_policy" "cloudbuild-github-connection
   provider = google-beta
 
   project     = "cloudbuild-386914"
-  secret_id   = google_secret_manager_secret.github-token-secret.secret_id
+  secret_id   = data.google_secret_manager_secret.github-token-secret.secret_id
   policy_data = data.google_iam_policy.cloudbuild-github-connection.policy_data
 }
 
