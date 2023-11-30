@@ -71,7 +71,7 @@ resource "google_cloudbuild_trigger" "pr-branch-trigger" {
     }
   }
 
-  filename       = "cloudbuild_pull_request.yaml"
+  filename       = "cloudbuild.yaml"
   included_files = ["**"]
 
   depends_on = [google_cloudbuildv2_repository.github]
