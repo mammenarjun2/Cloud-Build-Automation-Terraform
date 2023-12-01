@@ -59,6 +59,7 @@ resource "google_cloudbuild_trigger" "pr-branch-trigger" {
   location = "us-central1"
   project  = "cloudbuild-386914"
   name     = "pr-branch"
+  description = "pull requests"
 
   repository_event_config {
     repository = google_cloudbuildv2_repository.github.id
@@ -67,7 +68,27 @@ resource "google_cloudbuild_trigger" "pr-branch-trigger" {
     }
   }
 
-  filename       = "cloudbuild.yaml"
+  filename       = "/scripts/pull/cloudbuild_pull.yaml"
+  included_files = ["**"]
+
+  depends_on = [google_cloudbuildv2_repository.github]
+}
+
+# Create Cloud Build trigger for main requests 
+resource "google_cloudbuild_trigger" "main-branch-trigger" {
+  location = "us-central1"
+  project  = "cloudbuild-386914"
+  name     = "main-branch"
+   description = "merged requests"
+
+  repository_event_config {
+    repository = google_cloudbuildv2_repository.github.id
+    pull_request {
+      branch = "^main$"
+    }
+  }
+
+  filename       = "/scripts/apply/cloudbuild_apply.yaml"
   included_files = ["**"]
 
   depends_on = [google_cloudbuildv2_repository.github]
