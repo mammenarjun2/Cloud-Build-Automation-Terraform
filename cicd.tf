@@ -83,7 +83,7 @@ resource "google_cloudbuild_trigger" "main-branch-trigger" {
 
   repository_event_config {
     repository = google_cloudbuildv2_repository.github.id
-    pull_request {
+    push {
       branch = "^main$"
     }
   }
