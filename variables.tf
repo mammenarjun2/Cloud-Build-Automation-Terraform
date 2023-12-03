@@ -9,3 +9,9 @@ variable "app_id" {
     default = "44594018"
   
 }
+
+variable "region" { 
+    type = string
+    default = "us-central1"
+  
+}

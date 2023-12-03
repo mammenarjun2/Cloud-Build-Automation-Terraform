@@ -2,7 +2,7 @@ resource "google_cloudbuildv2_connection" "github" {
   provider = google-beta
 
   project  = var.project
-  location = "us-central1"
+  location = var.region
   name     = "github-connection"
 
   github_config {
@@ -17,7 +17,7 @@ resource "google_cloudbuildv2_repository" "github" {
   provider = google-beta
 
   project           = var.project
-  location          = "us-central1"
+  location          = var.region
   name              = "testcloudbuild"
   parent_connection = google_cloudbuildv2_connection.github.name
   remote_uri        = "https://github.com/mammenarjun2/testcloudbuild.git"
@@ -45,7 +45,7 @@ resource "google_secret_manager_secret_iam_policy" "cloudbuild-github-connection
 
 # Create Cloud Build trigger for pull requests
 resource "google_cloudbuild_trigger" "pr-branch-trigger" {
-  location = "us-central1"
+  location = var.region
   project  = var.project
   name     = "pr-branch"
   description = "pull requests"
@@ -65,7 +65,7 @@ resource "google_cloudbuild_trigger" "pr-branch-trigger" {
 
 # Create Cloud Build trigger for main requests 
 resource "google_cloudbuild_trigger" "main-branch-trigger" {
-  location = "us-central1"
+  location = var.region
   project  = var.project
   name     = "main-branch"
    description = "merged requests"
