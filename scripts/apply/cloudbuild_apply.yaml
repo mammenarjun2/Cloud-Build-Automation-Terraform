@@ -3,7 +3,7 @@ steps:
     name: 'hashicorp/terraform:1.3.5'
     args:
       - 'init'
-      - '-backend-config=bucket=tf-state-${$PROJECT_ID}'
+      - '-backend-config=bucket=tf-state-${PROJECT_ID}'
     env:
       - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID'
 
