@@ -1,0 +1,1 @@
+![](<Cloud build automation (1).png>)

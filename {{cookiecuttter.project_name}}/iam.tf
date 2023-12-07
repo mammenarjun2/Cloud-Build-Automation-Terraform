@@ -9,7 +9,6 @@ locals {
     "roles/cloudbuild.connectionViewer",
     "roles/iam.serviceAccountViewer",
     "roles/logging.logWriter",
-    "roles/resourcemanager.projectIamAdmin",
     "roles/secretmanager.viewer",
     "roles/secretmanager.secretAccessor",
     "roles/storage.admin",

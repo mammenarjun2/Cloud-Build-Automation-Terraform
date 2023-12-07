@@ -1,17 +1,17 @@
 variable "project" { 
     type = string
-    default = "cloudbuild-386914"
+    default = "{{cookiecutter.gcp_project}}"
   
 }
 
 variable "app_id" { 
     type = string
-    default = "44594018"
+    default = "{{cookiecutter.app_id}}"
   
 }
 
 variable "region" { 
     type = string
-    default = "us-central1"
+    default = "{{cookiecutter.region}}"
   
 }
