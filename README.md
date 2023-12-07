@@ -10,4 +10,5 @@
 
 
 
-(</design/Cloud_build_automation.png>)
+![Image Alt Text](/design/Cloud_build_automation.png)
+
