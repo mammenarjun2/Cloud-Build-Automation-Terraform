@@ -21,3 +21,5 @@ and getting your repository connected to the pipline.
 
 
 ![Image Alt Text](/design/Cloud_build_automation.png)
+
+(<design/Cloud_build_automation.png>)
