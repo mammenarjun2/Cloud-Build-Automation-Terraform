@@ -1,19 +1,19 @@
 
-#### Cloud build automation
+# Cloud build automation
 
-## What does it do?
+### What does it do?
 
 Allows you to deploy a CI/CD with GCP using the native managed service cloudbuild
 with speed. Taking care of the extra steps of configuring terraform, state, cloudbuild steps
 and getting your repository connected to the pipline.
 
-## Features
+### Features
 
 - Cookiecutter auto fill Terraform (python library)
 - Bash script to run Terraform and implement state into GCS
 
 
-## Steps
+### Steps
 
 - instaill the python library and run cookiecutter
 - You will then get a folder with your project
