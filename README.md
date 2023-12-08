@@ -23,16 +23,16 @@ we don't want to create secrets via terraform.
 - Bash script to run Terraform and implement state into GCS
 
 
-Install `cruft` on your system:
+Install `cookiecutter` on your system:
 
 ```sh
-pip3 install cruft
+pip3 install cookiecutter
 ```
 
 Then run the below
 
 ```sh
-cruft create https://github.com/mammenarjun2/testcloudbuild.git
+cookiecutter https://github.com/mammenarjun2/testcloudbuild.git
 ```
 
 ![Image Alt Text](/design/Cloud_build_automation.png)
