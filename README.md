@@ -3,9 +3,19 @@
 
 ### What does it do?
 
-Allows you to deploy a CI/CD with GCP using the native managed service cloudbuild
-with speed. Taking care of the extra steps of configuring terraform, state, cloudbuild steps
-and getting your repository connected to the pipline.
+Allows you to deploy a CI/CD with GCP using the native managed service Cloudbuild
+with speed. Taking care of the extra steps of configuring terraform,terraform state, cloudbuild steps
+and getting your Github repository connected to the pipline.
+
+
+### Addtional notes
+
+In the GCP console you head to https://console.cloud.google.com/cloud-build/repositories/
+in your project and login to your Github and authenticate the repository you want to use.
+Once the connection is complete Github will make a secret in secret manager called github-token-(random-values).
+Copy out the secret and create a new sceret within secret manager in the console called **github-token** for your terraform to use. Ideally 
+we don't want to create secrets via terraform.
+
 
 ### Features
 
