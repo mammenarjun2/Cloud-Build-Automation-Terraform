@@ -3,9 +3,9 @@
 
 ### What does it do?
 
-Allows you to deploy a CI/CD with GCP using the native managed service Cloudbuild
-with speed. Taking care of the extra steps of configuring terraform,terraform state, cloudbuild steps
-and getting your Github repository connected to the pipline.
+Allows you to deploy a CI/CD with GCP using the native managed service Cloudbuild,
+by taking care of the extra steps of configuring terraform,terraform state,cloudbuild configuration steps
+and getting your Github repository connected to the pipline via terraform.
 
 
 ### Addtional notes
