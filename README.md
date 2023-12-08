@@ -13,12 +13,13 @@ and getting your repository connected to the pipline.
 - Bash script to run Terraform and implement state into GCS
 
 
-### Steps
+Install cruft on your system:
 
-- instaill the python library and run cookiecutter
-- You will then get a folder with your project
-- Change directory into the folder and run the bash.sh file
+pip3 install cruft
 
+Then run the below
+
+cruft create https://github.com/mammenarjun2/testcloudbuild.git
 
 ![Image Alt Text](/design/Cloud_build_automation.png)
 
