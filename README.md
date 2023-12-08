@@ -1,5 +1,5 @@
 
-# Cloud build automation
+# Cloud Build Automation
 
 ### What does it do?
 
