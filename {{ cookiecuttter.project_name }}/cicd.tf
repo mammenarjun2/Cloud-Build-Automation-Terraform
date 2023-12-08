@@ -19,9 +19,9 @@ resource "google_cloudbuildv2_repository" "github" {
 
   project           = var.project
   location          = var.region
-  name              = "{{cookiecutter.github_repo_name}}"
+  name              = "{{ cookiecutter.github_repo_name }}"
   parent_connection = google_cloudbuildv2_connection.github.name
-  remote_uri        = "{{cookiecutter.remote_uri}}"
+  remote_uri        = "{{ cookiecutter.remote_uri }}"
 
   depends_on = [google_cloudbuildv2_connection.github]
 }
