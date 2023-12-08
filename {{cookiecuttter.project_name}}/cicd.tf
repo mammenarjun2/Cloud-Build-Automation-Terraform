@@ -1,3 +1,4 @@
+
 resource "google_cloudbuildv2_connection" "github" {
   provider = google-beta
 
@@ -18,9 +19,9 @@ resource "google_cloudbuildv2_repository" "github" {
 
   project           = var.project
   location          = var.region
-  name              = "testcloudbuild"
+  name              = "{{cookiecutter.github_repo_name}}"
   parent_connection = google_cloudbuildv2_connection.github.name
-  remote_uri        = "https://github.com/mammenarjun2/testcloudbuild.git"
+  remote_uri        = "{{cookiecutter.remote_uri}}"
 
   depends_on = [google_cloudbuildv2_connection.github]
 }
