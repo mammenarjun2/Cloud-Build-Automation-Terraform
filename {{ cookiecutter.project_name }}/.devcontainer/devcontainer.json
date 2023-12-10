@@ -1,16 +1,4 @@
 {
 	"name": "{{ cookiecutter.project_name }}",
-	"image": "hashicorp/terraform/latest",
-
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"hashicorp.terraform"
-			]
-		}
-	},
-	"remoteUser": "vscode",
+	"image": "hashicorp/terraform/latest"
 }
