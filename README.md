@@ -35,5 +35,5 @@ Once the connection is complete Github will make a secret in secret manager call
 Copy out the secret and create a new sceret within secret manager in the console called **github-token** for your terraform to use. Ideally 
 we don't want to create secrets via terraform.
 
-**Remove the connection made in https://console.cloud.google.com/cloud-build/repositories/, the
+**Remove the connection made in https://console.cloud.google.com/cloud-build/repositories/, so the
 terraform can be applied**
