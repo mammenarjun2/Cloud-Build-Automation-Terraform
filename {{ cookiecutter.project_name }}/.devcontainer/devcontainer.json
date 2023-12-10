@@ -1,4 +1,0 @@
-{
-	"name": "{{ cookiecutter.project_name }}",
-	"image": "hashicorp/terraform/latest"
-}
