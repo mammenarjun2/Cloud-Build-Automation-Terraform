@@ -3,11 +3,11 @@ data "google_project" "current-project" {
 }
 
 data "google_secret_manager_secret" "github-token-secret" {
-  project   = "cloudbuild-386914"
+  project   = var.project
   secret_id = "github-connection-token"
 }
 
 data "google_secret_manager_secret_version_access" "github-token-secret-version" {
-  project = "cloudbuild-386914"
+  project = var.project
   secret  = data.google_secret_manager_secret.github-token-secret.id
 }

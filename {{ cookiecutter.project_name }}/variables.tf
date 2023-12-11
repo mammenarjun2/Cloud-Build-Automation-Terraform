@@ -1,17 +1,17 @@
 variable "project" { 
     type = string
-    default = "{{ cookiecutter.gcp_project }}"
+    default ="{{cookiecutter.project_name}}" 
   
 }
 
 variable "app_id" { 
     type = string
-    default = "{{ cookiecutter.app_id }}"
+    default ="{{cookiecutter.app_id}}"
   
 }
 
 variable "region" { 
     type = string
-    default = "{{ cookiecutter.region }}"
+    default ="{{cookiecutter.region}}"
   
 }

@@ -4,65 +4,39 @@ locals {
     "roles/iam.serviceAccountUser",
   ]
 
-  iam_automation_sa_project_roles = [
+ # Add permissons below depending on what is required to be deployed for the project 
+
+  cloud_build_sa_project_roles = [
     "roles/cloudbuild.builds.viewer",
     "roles/cloudbuild.connectionViewer",
-    "roles/iam.serviceAccountViewer",
-    "roles/logging.logWriter",
-    "roles/secretmanager.viewer",
-    "roles/secretmanager.secretAccessor",
-    "roles/storage.admin",
   ]
 }
 
-resource "google_service_account" "iam-automation" {
+resource "google_service_account" "cloud-build-access" {
   project      = var.project
-  account_id   = "iam-automation"
-  display_name = "Service Account for Iam automation"
+  account_id   = "cloud-build-access"
+  display_name = "Service Account for cloud build, based on project needs"
 }
 
 # Allow Cloud Build to issue builds using a user-specified service account
 
-resource "google_service_account_iam_member" "cloud-build-sa-permissions" {
+resource "google_service_account_cloud_build" "cloud-build-sa-permissions" {
   for_each = toset(local.cloud_build_impersonate_roles)
 
-  service_account_id = google_service_account.iam-automation.name
+  service_account_id = google_service_account.cloud-build-access.name
   role               = each.value
   member             = "serviceAccount:${data.google_project.current-project.number}@cloudbuild.gserviceaccount.com"
 }
 
 # Permissions needed for the service account to apply the necessary changes
 
-resource "google_project_iam_member" "iam-automation-sa-permissions" {
-  for_each = toset(local.iam_automation_sa_project_roles)
+resource "google_project_cloud_build_access" "cloud-build-access-sa-permissions" {
+  for_each = toset(local.cloud_build_sa_project_roles)
 
   project = var.project
   role    = each.value
-  member  = "serviceAccount:${google_service_account.iam-automation.email}"
+  member  = "serviceAccount:${google_service_account.cloud-build-access.email}"
 }
 
 
 
-
-
-# standard Iam role's below
-/*
-resource "google_project_iam_binding" "project" {
-  project = "your-project-id"
-  role    = "roles/editor"
-
-  members = [
-    "user:test@example.com",
-  ]
-}
-
-
-resource "google_project_iam_binding" "project" {
-  project = "your-project-id"
-  role    = "roles/viewer"
-
-  members = [
-    "user:test@example.com",
-  ]
-}
-*/
