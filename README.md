@@ -7,7 +7,7 @@ Allows you to deploy a CI/CD for terraform with GCP using the native managed ser
 by taking care of the extra steps of configuring terraform,terraform state,cloudbuild yaml steps
 and getting your Github repository connected to the pipline via terraform.
 
-### Features
+### Features 
 
 - Cookiecutter auto fill Terraform (python library)
 - Bash script to run Terraform and implement state into GCS
@@ -24,6 +24,8 @@ Then run the below
 ```sh
 cookiecutter https://github.com/mammenarjun2/testcloudbuild.git
 ```
+
+Finally run **bash.sh** to deploy terraform and adjust terraform state
 
 ![Image Alt Text](/design/Cloud_build_automation.png)
 
