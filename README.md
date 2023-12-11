@@ -3,7 +3,7 @@
 
 ### What does it do?
 
-Allows you to deploy a CI/CD using terraform with using the native managed service on the GCP platform called cloudbuild,
+Allows you to deploy a CI/CD using terraform with the native managed service on the GCP platform called cloudbuild,
 by taking care of the extra steps of configuring terraform,terraform state,cloudbuild yaml steps
 and getting your Github repository connected to the pipeline via terraform.
 
