@@ -3,13 +3,13 @@
 
 ### What does it do?
 
-Allows you to deploy a CI/CD for terraform with GCP using the native managed service Cloudbuild,
+Allows you to deploy a CI/CD using terraform with using the native managed service on the GCP platform called cloudbuild,
 by taking care of the extra steps of configuring terraform,terraform state,cloudbuild yaml steps
-and getting your Github repository connected to the pipline via terraform.
+and getting your Github repository connected to the pipeline via terraform.
 
 ### Features 
 
-- Cookiecutter auto fill Terraform (python library)
+- Cookiecutter to auto fill Terraform (python library)
 - Bash script to run Terraform and implement state into GCS
 
 
