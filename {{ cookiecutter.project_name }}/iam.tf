@@ -12,7 +12,7 @@ locals {
   ]
 }
 
-resource "google_service_account" "cloud_build_access" {
+resource "google_service_account" "cloud-build-access" {
   project      = var.project
   account_id   = "cloud_build_access"
   display_name = "Service Account for cloud build, based on project needs"
@@ -23,19 +23,19 @@ resource "google_service_account" "cloud_build_access" {
 resource "google_service_account_iam_member" "cloud_build_sa_permissions" {
   for_each = toset(local.cloud_build_impersonate_roles)
 
-  service_account_id = google_service_account.cloud_build_access.name
+  service_account_id = google_service_account.cloud-build-access.name
   role               = each.value
   member             = "serviceAccount:${data.google_project.current-project.number}@cloudbuild.gserviceaccount.com"
 }
 
-# Permissions needed for the service account to apply the necessary changes
+# Cloud Build project service account for deploying infra
 
 resource "google_project_iam_member" "project_access_sa_permissions" {
   for_each = toset(local.cloud_build_sa_project_roles)
 
   project = var.project
   role    = each.value
-  member  = "serviceAccount:${google_service_account.cloud_build_access.email}"
+  member  = "serviceAccount:${google_service_account.cloud-build-access.email}"
 }
 
 
