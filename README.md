@@ -3,7 +3,7 @@
 
 ### What does it do?
 
-Allows you to deploy a CI/CD pipline for terraform within GCP without having to focus on constructing
+Allows you to deploy a CI/CD pipeline for terraform within GCP without having to focus on constructing
 the IAC code or applying the terraform to get it ready to work with Cloud Build. This is where templating
 libraries like Cookiecutter become useful! 
 
